@@ -10,10 +10,31 @@ import java.util.ArrayList;
 public class Graph
 {
 
-    private final ArrayList<Point> points = new ArrayList<>();
-    private final ArrayList<Point> visitedPoints = new ArrayList<>();
-    private final ArrayList<Point> unvisitedPoints = new ArrayList<>();
-    private final ArrayList<Edge> edges = new ArrayList<>();
+    private final ArrayList<Point> points;
+    private final ArrayList<Point> visitedPoints;
+    private final ArrayList<Point> unvisitedPoints;
+    private final ArrayList<Edge> edges;
+
+    /**
+     * @desc Constructor for the case no initial number of points is given
+     */
+    public Graph()
+    {
+        /* Initialize with 10 points placeholders */
+        this(10);
+    }
+
+    /**
+     * @desc Constructor that initialize all the graph variables
+     * @param numPoints The number of points on the graph
+     */
+    public Graph(int numPoints)
+    {
+        points = new ArrayList<>();
+        visitedPoints = new ArrayList<>();
+        unvisitedPoints = new ArrayList<>();
+        edges = new ArrayList<>();
+    }
 
     public void addPoint(Point p)
     {
@@ -23,13 +44,12 @@ public class Graph
 
     /**
      * @desc Set a point from the unvisited points list as visited
-     * @param index The index in the unvisited points List of the point to set as visited
+     * @param p The point we have just visited
      */
-    public void setUnvisitedPointVisited(Integer index)
+    public void setPointVisited(Point p)
     {
         try
         {
-            Point p = this.unvisitedPoints.get(index);
             this.unvisitedPoints.remove(p);
             this.visitedPoints.add(p);
         }
@@ -44,14 +64,36 @@ public class Graph
         return this.points;
     }
 
+    public ArrayList<Point> getVisitedPoints()
+    {
+        return this.visitedPoints;
+    }
+
     public ArrayList<Point> getUnvisitedPoints()
     {
         return this.unvisitedPoints;
     }
 
-    public ArrayList<Point> getVisitedPoints()
+    /**
+     * @desc Finds the closest unvisited point to a given point p
+     * @param from The point from which we need to find the closest point
+     *
+     * @return Point The point closest to the input point
+     */
+    public Point getClosestUnvisitedPoint(Point from)
     {
-        return this.visitedPoints;
+        Point closest = this.unvisitedPoints.get(0);
+
+        /* Yes, point 0 will be checked twice... less code this way */
+        for (Point p : this.unvisitedPoints)
+        {
+            if (from.distanceFromPoint(closest) > from.distanceFromPoint(p))
+            {
+                /* If p is closer to from, then we make p the new closest */
+                closest = p;
+            }
+        }
+        return closest;
     }
 
     public void addEdge(Edge e)
