@@ -1,4 +1,4 @@
-The-Algorithm-Design-Manual-Programs---Java
+The-Algorithm-Design-Manual-Programs (Java)
 ===========================================
 
 Lately I have been reading the textbook "The Algorithm Design Manual (2nd ed)" by Steven S. Skiena. This repository contain my implementations of the different problems and exercises from the textbook.
