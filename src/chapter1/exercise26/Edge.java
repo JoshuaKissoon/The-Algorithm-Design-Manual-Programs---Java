@@ -25,5 +25,29 @@ public final class Edge
     {
         return this.b;
     }
+    
+    /**
+     * @desc Computes the length of this edge: the distance between the 2 points
+     * @return double The length of this edge
+     */
+    public double length()
+    {
+        return this.b.distanceFromPoint(this.a);
+    }
+    
+    @Override
+    public String toString()
+    {
+        StringBuilder out = new StringBuilder();
+        out.append("[[ Edge Data: ");
+        out.append("Point A: ");
+        out.append(this.a);
+        out.append(" Point B: ");
+        out.append(this.b);
+        out.append(" Edge Length: ");
+        out.append(this.length());
+        out.append(" ]]");
+        return out.toString();
+    }
 
 }

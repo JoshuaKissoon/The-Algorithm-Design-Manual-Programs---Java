@@ -13,9 +13,9 @@ public final class NearestNeighborAlgo implements RobotTourOptimizationAlgorithm
     private int i;
     private final Graph tourGraph;
 
-    public NearestNeighborAlgo(Graph tourGraph)
+    public NearestNeighborAlgo(Graph initialGraph)
     {
-        this.tourGraph = tourGraph;
+        this.tourGraph = initialGraph;
     }
 
     @Override
@@ -52,5 +52,22 @@ public final class NearestNeighborAlgo implements RobotTourOptimizationAlgorithm
         tourGraph.addEdge(new Edge(currentPoint, initialPoint));
         System.out.println("Creating edge between the current point " + currentPoint + " and the Starting point " + initialPoint);
         System.out.println("***************** NEAREST NEIGHBOUR ALGORITHM EXECUTION COMPLETED ************************");
+    }
+    
+    @Override
+    public double getTotalDistanceTraveled()
+    {
+        Double totalDistance = 0d;
+        for(Edge e : this.tourGraph.getEdges())
+        {
+            totalDistance += e.length();
+        }        
+        return totalDistance;
+    }
+    
+    @Override
+    public Graph getTourGraph()
+    {
+        return this.tourGraph;
     }
 }

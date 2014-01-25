@@ -106,4 +106,18 @@ public class Graph
         return this.edges;
     }
 
+    @Override
+    public String toString()
+    {
+        StringBuilder out = new StringBuilder();
+        out.append(" ************** POINTS **************** \n ");
+        out.append(this.points);
+        out.append(" \n\n************* VISITED POINTS ****************\n");
+        out.append(this.visitedPoints);
+        out.append(" \n\n ************* UNVISITED POINTS ****************\n");
+        out.append(this.unvisitedPoints);
+        out.append("\n\n ************* EDGES ****************\n");
+        out.append(this.edges);
+        return out.toString();
+    }
 }

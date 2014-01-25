@@ -1,11 +1,11 @@
 /**
  * @author Joshua Kissoon
- * @desc Class that controls and runs the Nearest Neighbor algorithm
+ * @desc Class that controls and runs the Robot Tour algorithms
  */
 
 package chapter1.exercise26;
 
-public class NearestNeighborController
+public class RobotTour
 {
     public static void main(String[] args)
     {
@@ -29,6 +29,10 @@ public class NearestNeighborController
         
         NearestNeighborAlgo nna = new NearestNeighborAlgo(g);
         nna.executeAlgorithm();
+        
+        System.out.println("Total Distance via Nearest Neighbor Algorithm: " + nna.getTotalDistanceTraveled());
+        System.out.println("Nearest Neighbor Algorithm Graph: ");
+        System.out.println(nna.getTourGraph());
         
     }
 }
