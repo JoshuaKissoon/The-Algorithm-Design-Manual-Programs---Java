@@ -25,7 +25,18 @@ public final class Edge
     {
         return this.b;
     }
-    
+
+    /**
+     * @desc Checks if a point makes up this edge
+     * @param p the point to check for
+     *
+     * @return boolean whether the point is on the edge
+     */
+    public boolean hasPoint(Point p)
+    {
+        return (this.a == p || this.b == p);
+    }
+
     /**
      * @desc Computes the length of this edge: the distance between the 2 points
      * @return double The length of this edge
@@ -34,7 +45,7 @@ public final class Edge
     {
         return this.b.distanceFromPoint(this.a);
     }
-    
+
     @Override
     public String toString()
     {

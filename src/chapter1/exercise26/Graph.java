@@ -36,6 +36,18 @@ public class Graph
         edges = new ArrayList<>();
     }
 
+    /**
+     * @desc Basically a method to clone a graph
+     * @param g The graph from which to replicate this one
+     */
+    public Graph(Graph g)
+    {
+        this.points = new ArrayList<>(g.points);
+        this.visitedPoints = new ArrayList<>(g.visitedPoints);
+        this.unvisitedPoints = new ArrayList<>(g.unvisitedPoints);
+        this.edges = new ArrayList<>(g.edges);
+    }
+
     public void addPoint(Point p)
     {
         this.points.add(p);
@@ -110,13 +122,21 @@ public class Graph
     public String toString()
     {
         StringBuilder out = new StringBuilder();
-        out.append(" ************** POINTS **************** \n ");
+        out.append("Number of Points: ");
+        out.append(this.points.size());
+        out.append("\n************** POINTS **************** \n ");
         out.append(this.points);
-        out.append(" \n\n************* VISITED POINTS ****************\n");
+        out.append("\n\nNumber of Visited Points: ");
+        out.append(this.visitedPoints.size());
+        out.append("\n************* VISITED POINTS ****************\n");
         out.append(this.visitedPoints);
-        out.append(" \n\n ************* UNVISITED POINTS ****************\n");
+        out.append("\n\nNumber of Unvisited Points: ");
+        out.append(this.unvisitedPoints.size());
+        out.append("\n ************* UNVISITED POINTS ****************\n");
         out.append(this.unvisitedPoints);
-        out.append("\n\n ************* EDGES ****************\n");
+        out.append("\n\nNumber of Edges: ");
+        out.append(this.edges.size());
+        out.append("\n ************* EDGES ****************\n");
         out.append(this.edges);
         return out.toString();
     }
