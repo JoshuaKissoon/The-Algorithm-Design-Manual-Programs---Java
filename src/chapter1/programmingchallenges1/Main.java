@@ -43,13 +43,15 @@ class Main implements Runnable
         String input;
         StringTokenizer idata;
         int i, j;
+        int counter = 0;
 
-        while ((input = Main.ReadLn(255)) != null)
+        input = Main.ReadLn(255);
+        while ((input != null) && !input.equals(""))
         {
             idata = new StringTokenizer(input);
             i = Integer.parseInt(idata.nextToken());
             j = Integer.parseInt(idata.nextToken());
-            
+
             /* Loop through and run the algorithm on each of the integers between these numbers */
             int maxCycleLength = 0;
             for (int x = i; x <= j; x++)
@@ -60,9 +62,15 @@ class Main implements Runnable
                 {
                     maxCycleLength = cl;
                 }
-            }            
-            System.out.println(input.concat(" " + maxCycleLength));
-        }        
+            }
+            if (counter != 0)
+            {
+                System.out.print("\n");
+            }
+            counter++;
+            System.out.print(input.concat(" " + maxCycleLength));
+            input = Main.ReadLn(255);
+        }
         System.exit(0);
     }
 
